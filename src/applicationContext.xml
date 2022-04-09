@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Define your property file here -->
+    <context:property-placeholder location="classpath:sports.properties"/>
+	
+    <!-- Define your beans here -->
+    <bean id="mycoach"  class = "com.codes.springdemo.TrackCoach"/>
+    <bean id ="fortuneservice" class ="com.codes.springdemo.HappyFortuneService"/>
+    
+    <!-- define the dependency -->
+
+   <!-- Constructor injection -->
+    <bean id = "mycoach1" class = "com.codes.springdemo.BaseBallCoach">
+    <constructor-arg ref="fortuneservice"/>
+    </bean>
+    
+   <!-- Setter injection -->    
+    <bean id="cricketCoach" class = "com.codes.springdemo.CricketCoach">
+    <property name="fortuneService" ref="fortuneservice"/>
+       <!-- inject litral value -->
+    <property name="email" value="abc@gmailcom"/>
+    <property name="team" value="${team}"/>
+    
+    </bean>
+    
+	
+</beans>
+
+
+
+
+
