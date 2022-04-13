@@ -18,4 +18,15 @@ public class TrackCoach implements Coach {
 	public String getdailyFortune() {
 		return fortuneService.grtFortune();
 	}
+	
+	//init custom method
+	public void initBeforeBean(){
+		System.out.println("just called before bean initialisation");
+	}
+	
+	//init custom method
+		public void destroyAfterBean(){
+			System.out.println("just called After bean destroyed");
+		}
+	
 }
